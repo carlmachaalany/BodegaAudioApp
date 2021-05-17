@@ -75,14 +75,21 @@
 </script>
 
 <div>
-    <button disabled={isRecording} on:click={handleRec}>Record New</button>
+    <button
+        id="record-btn"
+        class="waves-effect waves-light teal accent-4"
+        disabled={isRecording}
+        on:click={handleRec}>Record New</button
+    >
 
     <button
+        class="waves-effect"
         disabled={recording.blob === null || isRecording}
         on:click={() => handlePlay(recording)}>Play</button
     >
 
     <button
+        class="waves-effect"
         disabled={saved === true || recording.blob === null}
         on:click={() => handleSave(recording)}>Save Recording</button
     >
@@ -106,7 +113,13 @@
     button:hover {
         cursor: pointer;
     }
+    button:focus {
+        background-color: #b2dfdb;
+    }
     p {
         text-align: center;
+    }
+    #record-btn {
+        color: whitesmoke;
     }
 </style>

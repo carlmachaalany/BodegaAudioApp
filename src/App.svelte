@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Navbar from "./Components/Navbar.svelte";
 	import Header from "./Components/Header.svelte";
 	import Buttons from "./Components/Buttons.svelte";
 	import Instructions from "./Components/Instructions.svelte";
@@ -7,15 +8,15 @@
 </script>
 
 <main>
+	<Navbar />
 	<Header />
 	<div>
 		<Instructions />
-		<input
-			type="text"
-			bind:value={word}
-			placeholder="input word to speak"
-		/>
-		<Buttons {word} />
+		<div class="container input-field">
+			<label for="word">Word to speak</label>
+			<input id="word" type="text" bind:value={word} />
+			<Buttons {word} />
+		</div>
 	</div>
 </main>
 
@@ -25,6 +26,6 @@
 		margin: 0 auto;
 	}
 	div {
-		background-color: rgb(230, 230, 230);
+		background-color: rgb(241, 241, 241);
 	}
 </style>

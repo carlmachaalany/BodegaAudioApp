@@ -10,6 +10,7 @@
         width: 100%;
     }
     h3 {
+        margin: 6rem 2rem 3rem 2rem;
         text-align: center;
     }
 </style>

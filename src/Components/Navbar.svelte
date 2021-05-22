@@ -1,20 +1,39 @@
-<script>
+<script lang="ts">
+    import Modal from "./Modal.svelte";
+
+    let isOpen: boolean = false;
+
+    const toggleModal = () => {
+        isOpen = !isOpen;
+    };
 </script>
 
-<nav>
-    <div class="nav-wrapper teal accent-4">
-        <a href="#" class="left brand-logo">Bodega Audio</a>
+<nav class="teal accent-4">
+    <div class="container nav-wrapper teal accent-4">
+        <div class="left brand-logo">Bodega Audio</div>
         <ul id="nav-mobile" class="right">
-            <li><a href="#">Login</a></li>
+            <li>
+                <div
+                    class="button btn-flat waves-effect"
+                    on:click={toggleModal}
+                >
+                    Login
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
+{#if isOpen}
+    <Modal />
+{/if}
 
 <style>
-    li a {
+    .button {
         color: whitesmoke;
     }
-    a {
-        text-decoration: none;
+    nav {
+        top: 0;
+        position: fixed;
+        z-index: 1;
     }
 </style>

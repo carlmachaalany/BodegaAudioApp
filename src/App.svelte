@@ -11,11 +11,13 @@
 	<Navbar />
 	<Header />
 	<div>
-		<Instructions />
-		<div class="container input-field">
-			<label for="word">Word to speak</label>
-			<input id="word" type="text" bind:value={word} />
-			<Buttons {word} />
+		<div class="container">
+			<Instructions />
+			<div class="container input-field">
+				<label for="word">Word to speak</label>
+				<input id="word" type="text" bind:value={word} />
+				<Buttons {word} />
+			</div>
 		</div>
 	</div>
 </main>

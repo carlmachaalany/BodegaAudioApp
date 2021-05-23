@@ -1,9 +1,37 @@
 <script>
+    export let isOpen;
+    let email;
+    let password;
+    let phone;
+
+    function toggleModal(e) {
+        if (e.target === this) {
+            isOpen = !isOpen;
+        }
+    }
 </script>
 
-<div class="modal-background">
+<div on:click={toggleModal} class="modal-background">
     <div class="container modal-content">
-        <h3>modal content</h3>
+        <div class="container input-field">
+            <label for="email">email</label>
+            <input id="email" type="email" bind:value={email} />
+        </div>
+        <div class="container input-field">
+            <label for="password">password</label>
+            <input id="password" type="password" bind:value={password} />
+        </div>
+
+        <p class="center-align">Or</p>
+
+        <div class="container input-field">
+            <label for="phone">phone number</label>
+            <input id="phone" type="tel" bind:value={phone} />
+        </div>
+
+        <div class="btn-container center-align">
+            <div class="btn">Submit</div>
+        </div>
     </div>
 </div>
 
@@ -13,15 +41,23 @@
         z-index: 2;
         top: 0;
         left: 0;
-        height: 100%;
+        height: 100vh;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.3);
     }
     .modal-content {
+        padding-top: 5rem;
         background-color: whitesmoke;
         border-radius: 5px;
         position: relative;
         top: 10%;
-        height: 60%;
+        height: 70%;
+    }
+    .btn-container {
+        padding: 2rem;
+    }
+    p {
+        margin: 2rem;
+        font-weight: bold;
     }
 </style>

@@ -24,7 +24,7 @@
     </div>
 </nav>
 {#if isOpen}
-    <Modal />
+    <Modal bind:isOpen />
 {/if}
 
 <style>

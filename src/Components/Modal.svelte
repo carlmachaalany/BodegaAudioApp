@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
     import { auth } from "../firebase";
 
-    export let isOpen;
+    export let isOpen: boolean;
     let email;
     let password;
     let phone;
+    let loginError: string;
 
     function toggleModal(e) {
         if (e.target === this) {
@@ -20,6 +21,7 @@
             })
             .catch((error) => {
                 console.log(error);
+                loginError = error.message;
             });
     }
     function handleSignUp(email, password) {
@@ -30,12 +32,16 @@
             })
             .catch((error) => {
                 console.log(error);
+                loginError = error.message;
             });
     }
 </script>
 
 <div on:click={toggleModal} class="modal-background">
     <div class="container modal-content">
+        {#if loginError != undefined}
+            <p class="error">{loginError}</p>
+        {/if}
         <div class="container input-field">
             <label for="email">email</label>
             <input id="email" type="email" bind:value={email} />
@@ -90,5 +96,11 @@
     p {
         margin: 2rem;
         font-weight: bold;
+    }
+    .error {
+        margin: 0;
+        font-size: smaller;
+        color: red;
+        text-align: center;
     }
 </style>

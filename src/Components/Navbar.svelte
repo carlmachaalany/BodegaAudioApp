@@ -1,11 +1,18 @@
 <script lang="ts">
+    import { auth } from "../firebase";
+
     import Modal from "./Modal.svelte";
 
     let isOpen: boolean = false;
+    export let isLoggedIn: boolean;
 
     const toggleModal = () => {
         isOpen = !isOpen;
     };
+
+    function logOut() {
+        auth.signOut();
+    }
 </script>
 
 <nav class="teal accent-4">
@@ -13,12 +20,18 @@
         <div class="left brand-logo">Bodega Audio</div>
         <ul id="nav-mobile" class="right">
             <li>
-                <div
-                    class="button btn-flat waves-effect"
-                    on:click={toggleModal}
-                >
-                    Login
-                </div>
+                {#if isLoggedIn}
+                    <div class="button btn-flat waves-effect" on:click={logOut}>
+                        Logout
+                    </div>
+                {:else}
+                    <div
+                        class="button btn-flat waves-effect"
+                        on:click={toggleModal}
+                    >
+                        Login
+                    </div>
+                {/if}
             </li>
         </ul>
     </div>

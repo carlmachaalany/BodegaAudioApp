@@ -2,7 +2,8 @@
 </script>
 
 <div>
-    <h3>Thank you for your contributions!</h3>
+    <h3>Thank you for taking the time to contribute!</h3>
+    <slot />
 </div>
 
 <style>

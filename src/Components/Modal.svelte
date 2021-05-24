@@ -1,4 +1,6 @@
 <script>
+    import { auth } from "../firebase";
+
     export let isOpen;
     let email;
     let password;
@@ -8,6 +10,27 @@
         if (e.target === this) {
             isOpen = !isOpen;
         }
+    }
+
+    function handleLogin(email, password) {
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                console.log(userCredential);
+                isOpen = !isOpen;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+    function handleSignUp(email, password) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                console.log(userCredential);
+                isOpen = !isOpen;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 </script>
 
@@ -30,7 +53,12 @@
         </div>
 
         <div class="btn-container center-align">
-            <div class="btn">Submit</div>
+            <div class="btn" on:click={() => handleLogin(email, password)}>
+                Login
+            </div>
+            <div class="btn" on:click={() => handleSignUp(email, password)}>
+                Sign Up
+            </div>
         </div>
     </div>
 </div>
@@ -55,6 +83,9 @@
     }
     .btn-container {
         padding: 2rem;
+    }
+    .btn-container div {
+        margin-left: 1.5rem;
     }
     p {
         margin: 2rem;

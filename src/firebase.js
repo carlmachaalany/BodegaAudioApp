@@ -2,16 +2,17 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/storage';
+import 'firebase/firestore';
+import 'firebase/functions';
 
-var firebaseConfig = {
-    apiKey: "AIzaSyBcs9Kc-HQsIVmqSJ0ck_pf2-RfIC0AYLg",
-    authDomain: "audio-collection-53714.firebaseapp.com",
-    databaseURL: "https://audio-collection-53714-default-rtdb.firebaseio.com",
-    projectId: "audio-collection-53714",
-    storageBucket: "gs://audio-collection-53714.appspot.com",
-    messagingSenderId: "899314489094",
-    appId: "1:899314489094:web:4f6f878c38df184e78b087",
-    measurementId: "G-HTEZ7BRXBR"
+// databaseURL: "https://audio-collection-53714-default-rtdb.firebaseio.com",
+const firebaseConfig = {
+  apiKey: "AIzaSyBfTes7onZs-ZTgiwJltliiHDFMXtO-_T8",
+  authDomain: "bodegaappaudio.firebaseapp.com",
+  projectId: "bodegaappaudio",
+  storageBucket: "bodegaappaudio.appspot.com",
+  messagingSenderId: "983686206872",
+  appId: "1:983686206872:web:b23473ee087d8bba4e87ed"
 };
 
 // Initialize Firebase
@@ -19,4 +20,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 export const storage = firebase.storage();
+export const db = firebase.firestore();
 export const auth = firebase.auth();
+export const functions = firebase.functions();
+export const dbNotCalled = firebase.firestore;

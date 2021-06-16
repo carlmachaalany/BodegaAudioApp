@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { auth } from "../firebase";
+    import { auth, db } from "../firebase";
 
     export let isOpen: boolean;
     let email;
@@ -13,6 +13,7 @@
         }
     }
 
+    // login
     function handleLogin(email, password) {
         auth.signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
@@ -24,11 +25,13 @@
                 loginError = error.message;
             });
     }
+
+    // sign up
     function handleSignUp(email, password) {
         auth.createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log(userCredential);
-                isOpen = !isOpen;
+                // close that Modal
+                isOpen = !isOpen;                
             })
             .catch((error) => {
                 console.log(error);
